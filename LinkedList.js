@@ -3,9 +3,9 @@ class LinkedList {
         this.head = {
             value: value,
             next: null
-        };
+        }
         this.tail = this.head;
-        this.length = 1;
+        this.length = 1
     }
     append(value) {
         const newNode = {
@@ -71,6 +71,18 @@ class LinkedList {
         this.length--;
         return this.printList();
     }
+    reverse() {
+
+        let reversed = new LinkedList()
+        this.tail = { ... this.head, next: null }
+        let node = this.head
+        for (let i = 0; i < this.length; i++) {
+            reversed.prepend(node.value)
+            node = node.next
+        }
+
+        this.head = reversed.head
+    }
 
 }
 // Test
@@ -83,3 +95,5 @@ myLinkedList.insert(2, 99)
 myLinkedList.insert(20, 88)
 myLinkedList.printList()
 myLinkedList.remove(2)
+myLinkedList.reverse()
+console.log(myLinkedList)
